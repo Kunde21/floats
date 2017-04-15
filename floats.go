@@ -477,9 +477,7 @@ func Mul(dst, s []float64) {
 	if len(dst) != len(s) {
 		panic("floats: slice lengths do not match")
 	}
-	for i, val := range s {
-		dst[i] *= val
-	}
+	f64.Mul(dst, s)
 }
 
 // MulTo performs element-wise multiplication between s
@@ -489,10 +487,7 @@ func MulTo(dst, s, t []float64) []float64 {
 	if len(s) != len(t) || len(dst) != len(t) {
 		panic("floats: slice lengths do not match")
 	}
-	for i, val := range t {
-		dst[i] = val * s[i]
-	}
-	return dst
+	return f64.MulTo(dst, s, t)
 }
 
 // Nearest returns the index of the element in s
